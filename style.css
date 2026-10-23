@@ -119,3 +119,57 @@ h1, h2 {
   border-radius: 4px;
   margin-bottom: 12px;
 }
+
+/* Zadanie 4: Cennik i stopka */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.price-table th, 
+.price-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.price-table thead {
+  background-color: #f1f3f5;
+  text-align: left;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+footer {
+  padding: 40px 0 60px;
+  border-top: 1px solid #e2e8f0;
+}
+
+footer a {
+  color: #4426ff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Bonus: menu kolumnowe na ekranach < 600px */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .menu {
+    gap: 16px;
+  }
+}
