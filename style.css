@@ -173,3 +173,33 @@ footer a:hover {
     gap: 16px;
   }
 }
+
+/* Przycisk menu domyślnie ukryty */
+.menu-toggle {
+  display: none;
+  background: #4426ff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  .menu.menu--open {
+    display: flex;
+  }
+}
