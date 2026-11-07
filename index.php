@@ -1,7 +1,7 @@
 <?php
 $firma = 'Szprycha';
 $rok = date('Y');
-
+$imie = $_GET['imie'] ?? 'Maciej';
 $cennik = [
   ['nazwa' => 'Przegląd podstawowy', 'cena' => 120],
   ['nazwa' => 'Przegląd kompleksowy', 'cena' => 260],
@@ -10,6 +10,9 @@ $cennik = [
   ['nazwa' => 'Centrowanie koła', 'cena' => 50],
   ['nazwa' => 'Wymiana łańcucha i kasety', 'cena' => 45],
 ];
+
+$max_cena = max(array_column($cennik, 'cena'));
+
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +51,7 @@ $cennik = [
       <div class="hero">
         <h1>Profesjonalny Serwis Rowerowy</h1>
         <p>Zadbamy o Twój napęd, hamulce i zawieszenie w sercu Bydgoszczy. Szybko, precyzyjnie i bez niespodzianek.</p>
+        <p class="welcome">Cześć, <?= htmlspecialchars($imie) ?>!</p>
         <a href="#kontakt" class="btn-primary">Skontaktuj się z nami</a>
       </div>
       
@@ -94,6 +98,28 @@ $cennik = [
           <?php endforeach; ?>
         </tbody>
       </table>
+
+      <!-- Wykres SVG generowany pętlą PHP -->
+      <div class="chart-container" style="margin-top: 36px; background: #fff; padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow);">
+        <h3 style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-main);">Porównanie cen usług (Wykres SVG)</h3>
+        <svg viewBox="0 0 520 <?= count($cennik) * 44 ?>" width="100%" height="100%" role="img" aria-label="Wykres słupkowy cen usług">
+          <?php foreach ($cennik as $index => $usluga): 
+            $y = $index * 44;
+            // Obliczamy szerokość słupka (maksymalna szerokość to 300px)
+            $bar_width = ($usluga['cena'] / $max_cena) * 300;
+          ?>
+            <!-- Nazwa usługi -->
+            <text x="0" y="<?= $y + 20 ?>" font-size="12" font-weight="600" fill="#475569"><?= htmlspecialchars(mb_strimwidth($usluga['nazwa'], 0, 24, '...')) ?></text>
+            
+            <!-- Słupek SVG -->
+            <rect x="170" y="<?= $y ?>" width="<?= $bar_width ?>" height="28" rx="6" fill="#4f46e5" />
+            
+            <!-- Wartość kwotowa -->
+            <text x="<?= 178 + $bar_width ?>" y="<?= $y + 19 ?>" font-size="12" font-weight="700" fill="#4f46e5"><?= $usluga['cena'] ?> zł</text>
+          <?php endforeach; ?>
+        </svg>
+      </div>
+      
     </section>
   </main>
 
