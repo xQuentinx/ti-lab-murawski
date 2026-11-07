@@ -10,7 +10,17 @@
 <body>
 
   <header class="site-header">
-    <p class="logo">Szprycha</p>
+    <a class="logo" href="#">
+      <svg viewBox="0 0 120 64" width="72" height="38" role="img" aria-labelledby="logo-tytul">
+        <title id="logo-tytul">Szprycha</title>
+        <circle cx="28" cy="42" r="18" fill="none" stroke="#4426FF" stroke-width="5"/>
+        <circle cx="92" cy="42" r="18" fill="none" stroke="#4426FF" stroke-width="5"/>
+        <polyline points="28,42 48,14 80,14 92,42" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="48,14 60,42 80,14" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Szprycha</span>
+    </a>
+
     <button class="menu-toggle" aria-expanded="false" aria-label="Otwórz menu">Menu</button>
     <nav class="menu">
       <a href="#uslugi">Usługi</a>
@@ -21,7 +31,13 @@
 
   <main>
     <section id="uslugi">
-      <h1>Nasze Usługi</h1>
+      <div class="hero">
+        <h1>Profesjonalny Serwis Rowerowy</h1>
+        <p>Zadbamy o Twój napęd, hamulce i zawieszenie w sercu Bydgoszczy. Szybko, precyzyjnie i bez niespodzianek.</p>
+        <a href="#kontakt" class="btn-primary">Skontaktuj się z nami</a>
+      </div>
+      
+      <h2>Nasze Usługi</h2>
       <p class="section-desc">Profesjonalny serwis rowerowy w sercu Bydgoszczy.</p>
       
       <div class="cards">
